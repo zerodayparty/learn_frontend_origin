@@ -1,0 +1,308 @@
+/*
+ * 파일 이름: header.css
+ * 역할: 고정 Header, 로고, 모바일 햄버거 메뉴, 네비게이션 링크, 테마 버튼만 담당한다.
+ * 적용 순서: base.css 다음에 불러온다. 색상과 높이 변수는 base.css에서 가져온다.
+ * 상태 연결: ui.js가 active, scrolled, menu-open 클래스를 바꾸면 이 파일의 상태 선택자가 화면을 변경한다.
+ * 수정 기준: 상단 메뉴에서 발생한 문제만 이 파일에서 찾는다.
+ */
+
+.site-header {
+    /* 화면 상단 고정 메뉴를 설정한다. */
+    position: fixed;
+    /* 스크롤해도 화면 위에 고정한다. */
+    inset: 0 0 auto;
+    /* 위와 좌우에 붙인다. */
+    z-index: 100;
+    /* 본문보다 앞에 보이게 한다. */
+    height: var(--header-height);
+    /* 메뉴 높이를 공통 변수로 지정한다. */
+    border-bottom: 1px solid transparent;
+    /* 처음에는 투명한 아래 선을 둔다. */
+    transition: background-color var(--transition), border-color var(--transition), box-shadow var(--transition);
+    /* 스크롤 변화가 부드럽게 보이게 한다. */
+}
+
+/* 상단 고정 메뉴 설정을 끝낸다. */
+
+/*
+ * ui.js는 window.scrollY가 60 이상이면 Header에 scrolled 클래스를 붙인다.
+ * CSS는 데이터 값을 직접 계산하지 않고, JavaScript가 붙인 클래스에 따라 모양만 바꾼다.
+ */
+.site-header.scrolled {
+    /* 페이지를 60픽셀 이상 내렸을 때 메뉴를 설정한다. */
+    background: color-mix(in srgb, var(--color-bg) 90%, transparent);
+    /* 내용이 살짝 비치는 배경을 사용한다. */
+    border-color: var(--color-border);
+    /* 아래 구분선을 보이게 한다. */
+    box-shadow: 0 8px 30px rgba(20, 38, 31, 0.07);
+    /* 메뉴 아래에 약한 그림자를 넣는다. */
+    backdrop-filter: none;
+    /* 흐림 효과가 fixed 자식의 기준 영역을 Header로 바꾸므로, 모바일 전체 메뉴가 Viewport를 계속 기준으로 삼도록 끈다. */
+}
+
+/* 스크롤된 상단 메뉴 설정을 끝낸다. */
+
+.nav {
+    /* 로고와 메뉴 버튼을 배치한다. */
+
+    display: flex;
+    /* 자식 요소를 가로로 배치한다. */
+
+    align-items: center;
+    /* 세로 가운데에 맞춘다. */
+
+    justify-content: space-between;
+    /* 로고와 메뉴를 양쪽 끝에 놓는다. */
+
+    height: 100%;
+    /* 상단 메뉴 높이를 모두 사용한다. */
+}
+
+/* 메뉴 배치 설정을 끝낸다. */
+
+.logo {
+    /* 왼쪽 로고를 설정한다. */
+    font-family: var(--font-display);
+    /* 로고에 영문 제목 글꼴을 쓴다. */
+    font-size: 1.5rem;
+    /* 로고 크기를 지정한다. */
+    font-weight: 800;
+    /* 로고를 굵게 표시한다. */
+    letter-spacing: -0.05em;
+    /* 로고 글자 사이를 좁힌다. */
+}
+
+/* 로고 설정을 끝낸다. */
+
+.logo span {
+    /* 로고의 점을 설정한다. */
+    color: var(--color-accent);
+    /* 분홍색으로 강조한다. */
+}
+
+/* 로고 점 설정을 끝낸다. */
+
+.menu-toggle {
+    /* 모바일 햄버거 버튼을 설정한다. */
+    display: grid;
+    /* 세 줄을 격자로 쌓는다. */
+    gap: 0.3rem;
+    /* 세 줄 사이 간격을 만든다. */
+    width: 2.75rem;
+    /* 누르기 충분한 너비를 준다. */
+    height: 2.75rem;
+    /* 누르기 충분한 높이를 준다. */
+    padding: 0.72rem;
+    /* 선 주변에 안쪽 여백을 넣는다. */
+    background: var(--color-surface);
+    /* 현재 테마의 카드 배경색을 쓴다. */
+    border: 1px solid var(--color-border);
+    /* 버튼 경계를 표시한다. */
+    border-radius: 50%;
+    /* 버튼을 원 모양으로 만든다. */
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양을 보여준다. */
+}
+
+/* 모바일 햄버거 버튼 설정을 끝낸다. */
+
+.menu-toggle span {
+    /* 햄버거 버튼의 각 선을 설정한다. */
+    display: block;
+    /* 선이 너비를 가질 수 있게 한다. */
+    width: 100%;
+    /* 버튼 안쪽 너비를 모두 사용한다. */
+    height: 2px;
+    /* 선 두께를 지정한다. */
+    background: var(--color-text);
+    /* 현재 테마 글자색으로 선을 그린다. */
+    transition: transform var(--transition), opacity var(--transition);
+    /* X 모양 변화를 부드럽게 만든다. */
+}
+
+/* 햄버거 선 설정을 끝낸다. */
+
+/*
+ * ui.js가 menuOpen 상태를 true로 바꾸면 버튼에 active 클래스가 붙는다.
+ * 첫째 선과 셋째 선을 반대 방향으로 돌리고 가운데 선을 숨겨 햄버거 모양을 X 모양으로 바꾼다.
+ */
+.menu-toggle.active span:first-child {
+    /* 메뉴가 열렸을 때 첫 번째 선을 설정한다. */
+    transform: translateY(0.48rem) rotate(45deg);
+    /* 오른쪽 아래 방향으로 돌린다. */
+}
+
+/* 첫 번째 선의 열림 설정을 끝낸다. */
+
+.menu-toggle.active span:nth-child(2) {
+    /* 메뉴가 열렸을 때 두 번째 선을 설정한다. */
+    opacity: 0;
+    /* 가운데 선을 숨긴다. */
+}
+
+/* 두 번째 선의 열림 설정을 끝낸다. */
+
+.menu-toggle.active span:last-child {
+    /* 메뉴가 열렸을 때 마지막 선을 설정한다. */
+    transform: translateY(-0.48rem) rotate(-45deg);
+    /* 왼쪽 위 방향으로 돌린다. */
+}
+
+/* 마지막 선의 열림 설정을 끝낸다. */
+
+/*
+ * 모바일 메뉴는 평소 opacity와 visibility로 숨긴다.
+ * display: none을 사용하지 않아 열고 닫을 때 투명도와 위치 변화 애니메이션을 적용할 수 있다.
+ * visibility까지 함께 바꿔 숨겨진 링크가 키보드로 선택되지 않게 한다.
+ */
+.nav-panel {
+    /* 모바일 메뉴 패널을 설정한다. */
+    position: fixed;
+    /* 화면을 기준으로 고정한다. */
+    inset: var(--header-height) 0 0;
+    /* 고정 메뉴 아래 전체를 차지한다. */
+    display: flex;
+    /* 메뉴 목록과 테마 버튼을 배치한다. */
+    flex-direction: column;
+    /* 요소를 위아래로 쌓는다. */
+    justify-content: center;
+    /* 세로 가운데에 배치한다. */
+    align-items: center;
+    /* 가로 가운데에 배치한다. */
+    gap: 2rem;
+    /* 메뉴 목록과 버튼 사이를 띄운다. */
+    padding: 2rem;
+    /* 화면 가장자리와 내용을 띄운다. */
+    background: var(--color-bg);
+    /* 페이지 배경과 같은 색을 사용한다. */
+    opacity: 0;
+    /* 평소에는 투명하게 숨긴다. */
+    visibility: hidden;
+    /* 키보드로 접근되지 않게 숨긴다. */
+    transform: translateY(-1rem);
+    /* 위쪽에 살짝 올려 둔다. */
+    transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+    /* 열림과 닫힘을 부드럽게 만든다. */
+}
+
+/* 모바일 메뉴 패널 설정을 끝낸다. */
+
+.nav-panel.active {
+    /* 모바일 메뉴가 열린 상태를 설정한다. */
+    opacity: 1;
+    /* 메뉴를 완전히 보이게 한다. */
+    visibility: visible;
+    /* 메뉴를 클릭하고 선택할 수 있게 한다. */
+    transform: translateY(0);
+    /* 원래 위치로 내려온다. */
+}
+
+/* 열린 모바일 메뉴 설정을 끝낸다. */
+
+.nav-list {
+    /* 메뉴 링크 목록을 설정한다. */
+    display: flex;
+    /* 메뉴 항목을 유연하게 배치한다. */
+    flex-direction: column;
+    /* 모바일에서는 위아래로 쌓는다. */
+    align-items: center;
+    /* 메뉴 글자를 가운데 맞춘다. */
+    gap: 1.3rem;
+    /* 메뉴 항목 사이를 띄운다. */
+    margin: 0;
+    /* 목록의 기본 바깥 여백을 없앤다. */
+    padding: 0;
+    /* 목록의 기본 안쪽 여백을 없앤다. */
+    list-style: none;
+    /* 기본 점 표시를 없앤다. */
+}
+
+/* 메뉴 링크 목록 설정을 끝낸다. */
+
+.nav-list a {
+    /* 각 메뉴 링크를 설정한다. */
+    position: relative;
+    /* 아래 강조선을 링크 기준으로 배치한다. */
+    font-family: var(--font-display);
+    /* 메뉴에 영문 제목 글꼴을 사용한다. */
+    font-size: 1.55rem;
+    /* 모바일 전체 메뉴에서 크게 보이게 한다. */
+    font-weight: 600;
+    /* 메뉴를 또렷하게 표시한다. */
+}
+
+/* 각 메뉴 링크 설정을 끝낸다. */
+
+.nav-list a::after {
+    /* 메뉴 링크 아래 강조선을 만든다. */
+    position: absolute;
+    /* 링크 아래에 정확히 놓는다. */
+    right: 0;
+    /* 오른쪽 끝에서 시작한다. */
+    bottom: -0.3rem;
+    /* 글자 아래에 간격을 둔다. */
+    left: 0;
+    /* 왼쪽 끝까지 넓힌다. */
+    height: 2px;
+    /* 강조선 두께를 지정한다. */
+    background: var(--color-primary);
+    /* 민트색 강조선을 사용한다. */
+    content: "";
+    /* 장식 요소를 화면에 만든다. */
+    transform: scaleX(0);
+    /* 평소에는 너비를 0으로 숨긴다. */
+    transform-origin: right;
+    /* 오른쪽을 기준으로 접히게 한다. */
+    transition: transform var(--transition);
+    /* 강조선 움직임을 부드럽게 만든다. */
+}
+
+/* 메뉴 링크 강조선 설정을 끝낸다. */
+
+.nav-list a:hover::after,
+/* 마우스를 올린 메뉴 강조선을 선택한다. */
+.nav-list a:focus-visible::after {
+    /* 메뉴에 마우스나 키보드가 올라왔을 때 설정한다. */
+    transform: scaleX(1);
+    /* 강조선을 전체 너비로 펼친다. */
+    transform-origin: left;
+    /* 왼쪽에서 오른쪽으로 펼쳐지게 한다. */
+}
+
+/* 메뉴 링크 상호작용 설정을 끝낸다. */
+
+.theme-toggle {
+    /* 테마 변경 버튼을 설정한다. */
+    display: inline-flex;
+    /* 아이콘과 글자를 가로로 배치한다. */
+    align-items: center;
+    /* 아이콘과 글자를 세로 가운데 맞춘다. */
+    gap: 0.55rem;
+    /* 아이콘과 글자 사이를 띄운다. */
+    padding: 0.65rem 0.9rem;
+    /* 누르기 편한 내부 공간을 만든다. */
+    color: var(--color-text);
+    /* 현재 테마의 글자색을 사용한다. */
+    background: var(--color-surface);
+    /* 현재 테마의 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 버튼 테두리를 표시한다. */
+    border-radius: 999px;
+    /* 알약 모양으로 둥글게 만든다. */
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양을 보여준다. */
+    transition: transform var(--transition), border-color var(--transition);
+    /* 움직임과 테두리 변화를 부드럽게 만든다. */
+}
+
+/* 테마 변경 버튼 설정을 끝낸다. */
+
+.theme-toggle:hover {
+    /* 테마 버튼에 마우스를 올렸을 때 설정한다. */
+    border-color: var(--color-primary);
+    /* 테두리를 민트색으로 바꾼다. */
+    transform: translateY(-2px);
+    /* 버튼을 살짝 위로 움직인다. */
+}
+
+/* 테마 버튼 마우스 설정을 끝낸다. */

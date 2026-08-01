@@ -1,0 +1,252 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1400" viewBox="0 0 1920 1400" role="img" aria-labelledby="diagram-title diagram-description">
+    <title id="diagram-title">learn_frontend_origin 프로젝트 전체 실행 흐름</title>
+    <desc id="diagram-description">HTML과 CSS 및 JavaScript 파일 로드부터 UI, 폼 검증, GitHub Organization API 데이터가 화면에 반영되는 과정까지 보여 주는 구조도</desc>
+    <defs>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#192033" flood-opacity="0.10"/>
+        </filter>
+        <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#16866a"/>
+        </marker>
+        <marker id="arrow-navy" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M 0 0 L 12 6 L 0 12 z" fill="#445064"/>
+        </marker>
+        <style>
+            text { font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif; fill: #192033; }
+            .title { font-size: 38px; font-weight: 700; }
+            .subtitle { font-size: 18px; fill: #5f6878; }
+            .section-label { font-size: 17px; font-weight: 700; letter-spacing: 1.5px; fill: #0e6652; }
+            .card-title { font-size: 22px; font-weight: 700; }
+            .card-subtitle { font-size: 16px; font-weight: 700; fill: #0e6652; }
+            .body { font-size: 15px; }
+            .small { font-size: 13px; fill: #5f6878; }
+            .mono { font-family: "SFMono-Regular", Consolas, monospace; font-size: 14px; }
+            .number { font-size: 15px; font-weight: 700; fill: #ffffff; text-anchor: middle; dominant-baseline: middle; }
+            .phase-card { fill: #ffffff; stroke: #dce5e0; stroke-width: 2; filter: url(#shadow); }
+            .core-card { fill: #eef5f1; stroke: #16866a; stroke-width: 2; }
+            .ui-card { fill: #f3fbf8; stroke: #55b89a; stroke-width: 2; }
+            .form-card { fill: #fff7f8; stroke: #ff9aac; stroke-width: 2; }
+            .api-card { fill: #f5f7fb; stroke: #7b8da8; stroke-width: 2; }
+            .mini-card { fill: #ffffff; stroke: #dce5e0; stroke-width: 1.5; }
+            .arrow { fill: none; stroke: #16866a; stroke-width: 3; marker-end: url(#arrow-green); }
+            .arrow-neutral { fill: none; stroke: #445064; stroke-width: 2.5; marker-end: url(#arrow-navy); }
+            .arrow-dashed { fill: none; stroke: #445064; stroke-width: 2; stroke-dasharray: 8 7; marker-end: url(#arrow-navy); }
+            .divider { stroke: #dce5e0; stroke-width: 2; }
+        </style>
+    </defs>
+
+    <!-- 전체 배경과 제목 영역이다. -->
+    <rect width="1920" height="1400" fill="#f8faf8"/>
+    <rect x="0" y="0" width="1920" height="10" fill="#16866a"/>
+    <text class="title" x="60" y="62">learn_frontend_origin 프로젝트 전체 실행 흐름</text>
+    <text class="subtitle" x="60" y="94">정적 HTML · 역할별 CSS · 분리된 JavaScript · GitHub Organization 공개 API</text>
+    <rect x="1570" y="42" width="290" height="44" rx="22" fill="#eef5f1" stroke="#16866a"/>
+    <text class="body" x="1715" y="70" text-anchor="middle">별도 서버 · Docker · API Key 없음</text>
+
+    <!-- 첫 번째 층은 브라우저가 파일을 읽고 기능을 시작하는 순서다. -->
+    <text class="section-label" x="60" y="142">1. 페이지를 열었을 때 — 파일 로드와 초기화</text>
+
+    <rect class="phase-card" x="60" y="166" width="310" height="184" rx="20"/>
+    <circle cx="92" cy="198" r="16" fill="#16866a"/>
+    <text class="number" x="92" y="198">1</text>
+    <text class="card-title" x="120" y="205">index.html</text>
+    <text class="body" x="86" y="240">• 브라우저가 file:// 주소로 연다</text>
+    <text class="body" x="86" y="270">• Header · Main · Section · Form 생성</text>
+    <text class="body" x="86" y="300">• JavaScript가 찾을 class와 id 제공</text>
+    <text class="small" x="86" y="329">화면의 뼈대와 빈 프로젝트 영역</text>
+
+    <rect class="phase-card" x="410" y="166" width="350" height="184" rx="20"/>
+    <circle cx="442" cy="198" r="16" fill="#16866a"/>
+    <text class="number" x="442" y="198">2</text>
+    <text class="card-title" x="470" y="205">CSS 4개 적용</text>
+    <text class="mono" x="436" y="240">base.css</text>
+    <text class="body" x="565" y="240">변수 · 초기화 · 공통 모양</text>
+    <text class="mono" x="436" y="270">header.css</text>
+    <text class="body" x="565" y="270">메뉴 · 테마 버튼</text>
+    <text class="mono" x="436" y="300">sections.css</text>
+    <text class="body" x="565" y="300">본문 · 카드 · 폼</text>
+    <text class="mono" x="436" y="330">responsive.css</text>
+    <text class="body" x="580" y="330">화면 너비 · 동작 줄이기</text>
+
+    <rect class="phase-card" x="800" y="166" width="490" height="184" rx="20"/>
+    <circle cx="832" cy="198" r="16" fill="#16866a"/>
+    <text class="number" x="832" y="198">3</text>
+    <text class="card-title" x="860" y="205">&lt;head&gt;의 defer JavaScript 실행 순서</text>
+    <rect x="830" y="230" width="82" height="34" rx="8" fill="#eef5f1"/>
+    <text class="mono" x="871" y="252" text-anchor="middle">config</text>
+    <rect x="930" y="230" width="68" height="34" rx="8" fill="#eef5f1"/>
+    <text class="mono" x="964" y="252" text-anchor="middle">ui</text>
+    <rect x="1016" y="230" width="72" height="34" rx="8" fill="#eef5f1"/>
+    <text class="mono" x="1052" y="252" text-anchor="middle">form</text>
+    <rect x="1106" y="230" width="104" height="34" rx="8" fill="#eef5f1"/>
+    <text class="mono" x="1158" y="252" text-anchor="middle">projects</text>
+    <rect x="1228" y="230" width="48" height="34" rx="8" fill="#16866a"/>
+    <text class="mono" x="1252" y="252" text-anchor="middle" fill="#ffffff">app</text>
+    <path class="arrow-neutral" d="M 912 247 H 925"/>
+    <path class="arrow-neutral" d="M 998 247 H 1011"/>
+    <path class="arrow-neutral" d="M 1088 247 H 1101"/>
+    <path class="arrow-neutral" d="M 1210 247 H 1223"/>
+    <text class="body" x="830" y="298">각 기능 파일은 함수와 상태를 준비한다.</text>
+    <text class="small" x="830" y="326">HTML 해석 후 순서대로 실행: app.js는 준비된 기능을 마지막에 시작</text>
+
+    <rect class="phase-card" x="1330" y="166" width="530" height="184" rx="20"/>
+    <circle cx="1362" cy="198" r="16" fill="#16866a"/>
+    <text class="number" x="1362" y="198">4</text>
+    <text class="card-title" x="1390" y="205">app.js — 전원 켜기</text>
+    <text class="mono" x="1360" y="244">PortfolioUI.initialize()</text>
+    <text class="small" x="1655" y="244">화면 기능 시작</text>
+    <text class="mono" x="1360" y="278">PortfolioForm.initialize()</text>
+    <text class="small" x="1655" y="278">폼 검증 시작</text>
+    <text class="mono" x="1360" y="312">PortfolioProjects.initialize()</text>
+    <text class="small" x="1655" y="312">API 요청 시작</text>
+
+    <path class="arrow" d="M 370 258 H 400"/>
+    <path class="arrow" d="M 760 258 H 790"/>
+    <path class="arrow" d="M 1290 258 H 1320"/>
+
+    <!-- 두 번째 층은 모든 기능이 공유하는 상태와 화면 반영 원리다. -->
+    <text class="section-label" x="60" y="405">2. 모든 기능의 공통 원리 — HTML 요소 찾기부터 CSS 반영까지</text>
+    <rect class="core-card" x="60" y="428" width="1800" height="210" rx="24"/>
+
+    <rect class="mini-card" x="90" y="474" width="205" height="112" rx="14"/>
+    <text class="card-subtitle" x="192" y="502" text-anchor="middle">HTML · DOM</text>
+    <text class="small" x="192" y="529" text-anchor="middle">.menu-toggle · .project-grid</text>
+    <text class="small" x="192" y="552" text-anchor="middle">.contact-form · .reveal</text>
+
+    <rect class="mini-card" x="340" y="474" width="205" height="112" rx="14"/>
+    <text class="card-subtitle" x="442" y="502" text-anchor="middle">elements</text>
+    <text class="small" x="442" y="529" text-anchor="middle">querySelector로 찾은</text>
+    <text class="small" x="442" y="552" text-anchor="middle">실제 HTML 요소 보관함</text>
+
+    <rect class="mini-card" x="590" y="474" width="205" height="112" rx="14"/>
+    <text class="card-subtitle" x="692" y="502" text-anchor="middle">Event</text>
+    <text class="small" x="692" y="529" text-anchor="middle">click · input · submit</text>
+    <text class="small" x="692" y="552" text-anchor="middle">scroll · resize · 화면 진입</text>
+
+    <rect class="mini-card" x="840" y="474" width="205" height="112" rx="14"/>
+    <text class="card-subtitle" x="942" y="502" text-anchor="middle">state</text>
+    <text class="small" x="942" y="529" text-anchor="middle">현재 값과 데이터 기억</text>
+    <text class="small" x="942" y="552" text-anchor="middle">theme · menuOpen · status</text>
+
+    <rect class="mini-card" x="1090" y="474" width="205" height="112" rx="14"/>
+    <text class="card-subtitle" x="1192" y="502" text-anchor="middle">render 함수</text>
+    <text class="small" x="1192" y="529" text-anchor="middle">상태를 읽고 화면에 반영</text>
+    <text class="small" x="1192" y="552" text-anchor="middle">renderMenu · renderCards</text>
+
+    <rect class="mini-card" x="1340" y="474" width="205" height="112" rx="14"/>
+    <text class="card-subtitle" x="1442" y="502" text-anchor="middle">DOM 변경</text>
+    <text class="small" x="1442" y="529" text-anchor="middle">class · attribute · textContent</text>
+    <text class="small" x="1442" y="552" text-anchor="middle">innerHTML · data-theme</text>
+
+    <rect class="mini-card" x="1590" y="474" width="235" height="112" rx="14"/>
+    <text class="card-subtitle" x="1707" y="502" text-anchor="middle">CSS가 최종 표시</text>
+    <text class="small" x="1707" y="529" text-anchor="middle">.active · .visible · .invalid</text>
+    <text class="small" x="1707" y="552" text-anchor="middle">[data-theme="dark"]</text>
+
+    <path class="arrow" d="M 295 530 H 330"/>
+    <path class="arrow" d="M 545 530 H 580"/>
+    <path class="arrow" d="M 795 530 H 830"/>
+    <path class="arrow" d="M 1045 530 H 1080"/>
+    <path class="arrow" d="M 1295 530 H 1330"/>
+    <path class="arrow" d="M 1545 530 H 1580"/>
+    <text class="small" x="960" y="616" text-anchor="middle">핵심: JavaScript는 상태와 HTML을 바꾸고, 실제 색상 · 위치 · 애니메이션은 CSS가 결정한다.</text>
+
+    <!-- 세 번째 층의 왼쪽은 UI 기능의 실제 흐름이다. -->
+    <text class="section-label" x="60" y="690">3. 기능별 실제 흐름</text>
+    <rect class="ui-card" x="60" y="716" width="570" height="512" rx="24"/>
+    <text class="card-title" x="90" y="758">A. UI 기능 · js/ui.js</text>
+    <text class="small" x="90" y="784">메뉴 · 테마 · 스크롤 · 등장 효과 · 타자 효과 · 기본 정보</text>
+    <line class="divider" x1="90" y1="802" x2="600" y2="802"/>
+
+    <rect class="mini-card" x="90" y="826" width="230" height="106" rx="14"/>
+    <text class="card-subtitle" x="205" y="854" text-anchor="middle">햄버거 메뉴</text>
+    <text class="small" x="205" y="879" text-anchor="middle">click → menuOpen 반전</text>
+    <text class="small" x="205" y="902" text-anchor="middle">renderMenu → active 클래스</text>
+
+    <rect class="mini-card" x="350" y="826" width="250" height="106" rx="14"/>
+    <text class="card-subtitle" x="475" y="854" text-anchor="middle">다크 모드</text>
+    <text class="small" x="475" y="879" text-anchor="middle">theme 변경 → Local Storage</text>
+    <text class="small" x="475" y="902" text-anchor="middle">data-theme → CSS 변수 교체</text>
+
+    <rect class="mini-card" x="90" y="956" width="230" height="106" rx="14"/>
+    <text class="card-subtitle" x="205" y="984" text-anchor="middle">스크롤 UI</text>
+    <text class="small" x="205" y="1009" text-anchor="middle">scrollY ≥ 60 → scrolled</text>
+    <text class="small" x="205" y="1032" text-anchor="middle">scrollY ≥ 300 → 위 버튼</text>
+
+    <rect class="mini-card" x="350" y="956" width="250" height="106" rx="14"/>
+    <text class="card-subtitle" x="475" y="984" text-anchor="middle">등장 애니메이션</text>
+    <text class="small" x="475" y="1009" text-anchor="middle">IntersectionObserver · 20%</text>
+    <text class="small" x="475" y="1032" text-anchor="middle">visible → 48px · 850ms 이동</text>
+
+    <rect class="mini-card" x="90" y="1086" width="510" height="112" rx="14"/>
+    <text class="card-subtitle" x="345" y="1114" text-anchor="middle">초기 화면 정보와 반복 동작</text>
+    <text class="small" x="345" y="1140" text-anchor="middle">typingText ← setTimeout 타자 효과 · year ← 현재 연도</text>
+    <text class="small" x="345" y="1163" text-anchor="middle">displayName · GitHub 링크 ← PortfolioConfig</text>
+
+    <!-- 세 번째 층의 가운데는 폼 검증의 실제 흐름이다. -->
+    <rect class="form-card" x="675" y="716" width="510" height="512" rx="24"/>
+    <text class="card-title" x="705" y="758">B. 폼 검증 · js/form.js</text>
+    <text class="small" x="705" y="784">검증만 실행 · 서버 전송과 저장 없음</text>
+    <line class="divider" x1="705" y1="802" x2="1155" y2="802"/>
+
+    <rect class="mini-card" x="705" y="826" width="450" height="62" rx="12"/>
+    <text class="body" x="930" y="851" text-anchor="middle">HTML .contact-form · input · textarea</text>
+    <text class="small" x="930" y="874" text-anchor="middle">submit / input 이벤트를 initialize에서 연결</text>
+    <path class="arrow-neutral" d="M 930 888 V 910"/>
+
+    <rect class="mini-card" x="705" y="918" width="450" height="74" rx="12"/>
+    <text class="card-subtitle" x="930" y="945" text-anchor="middle">handleSubmit(event)</text>
+    <text class="small" x="930" y="970" text-anchor="middle">preventDefault → 입력칸 배열 생성</text>
+    <path class="arrow-neutral" d="M 930 992 V 1014"/>
+
+    <rect class="mini-card" x="705" y="1022" width="450" height="74" rx="12"/>
+    <text class="card-subtitle" x="930" y="1049" text-anchor="middle">getError → validateField</text>
+    <text class="small" x="930" y="1074" text-anchor="middle">필수값 · 이메일 형식 · 글자 수 검사</text>
+    <path class="arrow-neutral" d="M 930 1096 V 1118"/>
+
+    <rect class="mini-card" x="705" y="1126" width="450" height="72" rx="12"/>
+    <text class="body" x="930" y="1153" text-anchor="middle">invalid 클래스 · aria-invalid · 오류 textContent</text>
+    <text class="small" x="930" y="1178" text-anchor="middle">every(Boolean) → 폼 전체 성공 또는 실패 문장</text>
+
+    <!-- 세 번째 층의 오른쪽은 GitHub API와 카드 렌더링의 실제 흐름이다. -->
+    <rect class="api-card" x="1230" y="716" width="630" height="512" rx="24"/>
+    <text class="card-title" x="1260" y="758">C. Projects · js/projects.js</text>
+    <text class="small" x="1260" y="784">zerodayparty Organization 공개 저장소 · 최근 업데이트순 · 최대 6개</text>
+    <line class="divider" x1="1260" y1="802" x2="1830" y2="802"/>
+
+    <rect class="mini-card" x="1260" y="826" width="260" height="88" rx="12"/>
+    <text class="card-subtitle" x="1390" y="854" text-anchor="middle">initialize → load</text>
+    <text class="small" x="1390" y="879" text-anchor="middle">status = loading → render()</text>
+    <text class="small" x="1390" y="899" text-anchor="middle">로딩 Spinner 표시</text>
+
+    <rect x="1560" y="826" width="270" height="88" rx="12" fill="#192033"/>
+    <text x="1695" y="854" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff">GitHub REST API</text>
+    <text x="1695" y="879" text-anchor="middle" font-size="13" fill="#f2f5f3">/orgs/zerodayparty/repos</text>
+    <text x="1695" y="899" text-anchor="middle" font-size="12" fill="#b2bbc7">공개 API · Token 없음</text>
+    <path class="arrow" d="M 1520 870 H 1550"/>
+
+    <rect class="mini-card" x="1260" y="944" width="570" height="76" rx="12"/>
+    <text class="body" x="1545" y="971" text-anchor="middle">fetch(endpoint, signal) → response.ok 확인 → response.json()</text>
+    <text class="small" x="1545" y="996" text-anchor="middle">AbortController가 10초 초과 요청 중단 · 실패는 catch로 이동</text>
+    <path class="arrow-neutral" d="M 1545 1020 V 1042"/>
+
+    <rect class="mini-card" x="1260" y="1050" width="570" height="68" rx="12"/>
+    <text class="body" x="1545" y="1077" text-anchor="middle">data 배열 → state.projects · state.status · state.error</text>
+    <text class="small" x="1545" y="1101" text-anchor="middle">loading · success · error · empty 네 화면 상태</text>
+    <path class="arrow-neutral" d="M 1545 1118 V 1140"/>
+
+    <rect class="mini-card" x="1260" y="1148" width="570" height="50" rx="12"/>
+    <text class="body" x="1545" y="1179" text-anchor="middle">filter → map → escapeHTML/getSafeUrl → join → innerHTML 카드</text>
+
+    <!-- 마지막 층은 모든 기능에 공통으로 적용되는 안전 기준이다. -->
+    <text class="section-label" x="60" y="1280">4. 전체 기능을 감싸는 기준</text>
+    <rect x="60" y="1302" width="1800" height="66" rx="18" fill="#192033"/>
+    <text x="90" y="1330" font-size="15" font-weight="700" fill="#73e0bf">보안</text>
+    <text x="150" y="1330" font-size="14" fill="#f2f5f3">API Key 없음 · 외부 HTML 문자 이스케이프 · HTTPS github.com URL만 허용</text>
+    <text x="940" y="1330" font-size="15" font-weight="700" fill="#ff9aac">접근성</text>
+    <text x="1015" y="1330" font-size="14" fill="#f2f5f3">시맨틱 HTML · label 연결 · ARIA 상태 · 키보드 초점 · 동작 줄이기</text>
+    <text x="90" y="1355" font-size="15" font-weight="700" fill="#73e0bf">반응형</text>
+    <text x="170" y="1355" font-size="14" fill="#f2f5f3">모바일 기본 → 768px 태블릿 → 1024px 데스크톱</text>
+    <text x="940" y="1355" font-size="15" font-weight="700" fill="#ff9aac">검증</text>
+    <text x="1015" y="1355" font-size="14" fill="#f2f5f3">JavaScript 문법 검사 · 요구사항 정적 검사 42개 · Git 공백 검사</text>
+</svg>

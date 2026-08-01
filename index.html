@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ko" data-theme="light"> <!-- 문서 언어와 최초 밝은 테마를 지정한다. -->
+
+<head> <!-- 브라우저에 필요한 문서 정보를 시작한다. -->
+    <meta charset="UTF-8"> <!-- 한글이 깨지지 않도록 문자 인코딩을 지정한다. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 화면 너비에 맞춰 표시한다. -->
+    <meta name="description" content="HTML, CSS, JavaScript로 만든 반응형 학습자 포트폴리오"> <!-- 검색 결과에 사용할 페이지 설명이다. -->
+    <title>Frontend Learner | Portfolio</title> <!-- 브라우저 탭에 표시할 제목이다. -->
+
+    <!-- 🔥 image 🔥 -->
+    <link rel="icon" href="images/profile.svg" type="image/svg+xml"> <!-- 기존 프로필 SVG를 브라우저 탭 아이콘으로 사용한다. -->
+
+    <!-- 🔥 css files 🔥 -->
+    <link rel="stylesheet" href="css/base.css"> <!-- 폰트, 색상 변수, 초기화와 공통 디자인을 가장 먼저 불러온다. -->
+    <link rel="stylesheet" href="css/header.css"> <!-- 상단 메뉴와 테마 버튼 디자인을 두 번째로 불러온다. -->
+    <link rel="stylesheet" href="css/sections.css"> <!-- Hero부터 Footer까지 본문 디자인을 세 번째로 불러온다. -->
+    <link rel="stylesheet" href="css/responsive.css"> <!-- 태블릿, 데스크톱과 움직임 축소 규칙을 마지막에 불러온다. -->
+
+
+    <!-- 🔥 javascript files 🔥 -->
+    <script src="js/config.js" defer></script> <!-- 공통 설정을 첫 번째로 준비한다. -->
+    <script src="js/ui.js" defer></script> <!-- 메뉴, 테마와 스크롤 기능을 두 번째로 준비한다. -->
+    <script src="js/form.js" defer></script> <!-- 연락 폼 검증 기능을 세 번째로 준비한다. -->
+    <script src="js/projects.js" defer></script> <!-- GitHub 프로젝트 기능을 네 번째로 준비한다. -->
+    <script src="js/app.js" defer></script> <!-- HTML 해석 후 준비된 모든 기능을 마지막에 시작한다. -->
+
+</head> <!-- 문서 정보 영역을 끝낸다. -->
+
+
+
+
+<body> <!-- 화면에 보이는 모든 내용을 시작한다. -->
+    <a class="skip-link" href="#main-content">본문 바로가기</a> <!-- 키보드 사용자가 메뉴를 건너뛰게 한다. -->
+    <header class="site-header" id="site-header"> <!-- 페이지 상단과 네비게이션을 묶는다. -->
+
+        <!-- 🔥 <navigation> 🔥 -->
+        <nav class="nav container" aria-label="주요 메뉴"> <!-- 주요 이동 메뉴라는 의미를 전달한다. -->
+            <a class="logo" href="#hero" aria-label="첫 화면으로 이동">SON<span>.</span></a> <!-- 로고를 누르면 첫 화면으로 이동한다. -->
+
+            <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-controls="nav-menu" aria-expanded="false">
+                <!-- 모바일 메뉴를 여닫는 버튼이다. -->
+                <span></span> <!-- 햄버거 버튼의 첫 번째 선이다. -->
+                <span></span> <!-- 햄버거 버튼의 두 번째 선이다. -->
+                <span></span> <!-- 햄버거 버튼의 세 번째 선이다. -->
+            </button>
+
+            <div class="nav-panel" id="nav-menu"> <!-- 모바일과 데스크톱 메뉴 항목을 묶는다. -->
+
+                <ul class="nav-list">
+                    <li><a href="#about">소개</a></li> <!-- 소개 영역으로 이동한다. -->
+                    <li><a href="#skills">기술</a></li> <!-- 기술 영역으로 이동한다. -->
+                    <li><a href="#projects">프로젝트</a></li> <!-- 프로젝트 영역으로 이동한다. -->
+                    <li><a href="#contact">연락</a></li> <!-- 연락 영역으로 이동한다. -->
+                </ul>
+
+
+                <button class="theme-toggle" type="button" aria-label="다크 모드로 변경" aria-pressed="false">
+                    <!-- 밝은 화면과 어두운 화면을 바꾼다. -->
+                    <span class="theme-icon" aria-hidden="true">☾</span> <!-- 현재 테마에 맞는 장식 아이콘이다. -->
+                    <span class="theme-text">다크 모드</span> <!-- 버튼 기능을 글자로 알려준다. -->
+                </button> <!-- 테마 변경 버튼을 닫는다. -->
+
+            </div> <!-- 메뉴 패널을 닫는다. -->
+
+        </nav> <!-- 주요 이동 메뉴를 끝낸다. -->
+
+    </header> <!-- 페이지 상단을 끝낸다. -->
+
+
+    <main id="main-content"> <!-- 페이지 핵심 내용을 시작한다. -->
+
+        <!-- (5개의 섹션이 시작된다.) -->
+        <!-- 🔥 <section> for hero 🔥 -->
+        <section class="hero" id="hero" aria-labelledby="hero-title"> <!-- 첫인상을 전달하는 Hero 영역이다. -->
+            <div class="hero-decoration hero-decoration-one" aria-hidden="true"></div> <!-- 배경의 장식 원이다. -->
+            <div class="hero-decoration hero-decoration-two" aria-hidden="true"></div> <!-- 배경의 두 번째 장식 원이다. -->
+            <div class="container hero-grid"> <!-- Hero 내용을 화면 가운데 배치한다. -->
+                <div class="hero-copy reveal"> <!-- 인사말과 버튼을 묶는다. -->
+                    <p class="eyebrow">HELLO, WEB WORLD!</p> <!-- 작은 영문 인사말이다. -->
+                    <h1 id="hero-title">배우고, 만들고,<br><span>성장하는 개발자</span></h1> <!-- 페이지의 가장 중요한 제목이다. -->
+                    <p class="hero-description">순수 HTML, CSS, JavaScript로 아이디어를 실제 화면으로 만드는 프론트엔드 학습자다.</p>
+                    <!-- 자신을 한 문장으로 소개한다. -->
+                    <p class="typing-line"><span class="typing-prefix">지금 배우는 것:</span> <span class="typing-text"
+                            aria-live="polite"></span><span class="typing-cursor" aria-hidden="true">|</span></p>
+                    <!-- 학습 기술을 타자 효과로 보여준다. -->
+                    <div class="hero-actions"> <!-- 주요 행동 버튼을 묶는다. -->
+                        <a class="button button-primary" href="#projects">프로젝트 보기</a> <!-- 프로젝트 영역으로 이동한다. -->
+                        <a class="button button-secondary" href="#contact">연락하기</a> <!-- 연락 영역으로 이동한다. -->
+                    </div> <!-- 주요 행동 버튼 묶음을 끝낸다. -->
+                </div> <!-- Hero 글 영역을 닫는다. -->
+                <div class="hero-visual reveal"> <!-- 프로필 그림과 상태 카드를 묶는다. -->
+                    <div class="portrait-card"> <!-- 프로필 이미지를 카드 모양으로 감싼다. -->
+                        <img src="images/profile.svg" alt="노트북으로 웹 개발을 공부하는 학습자 일러스트" width="520" height="520">
+                        <!-- 의미 있는 대체 설명이 있는 프로필 이미지다. -->
+                        <div class="status-badge"><span aria-hidden="true"></span>매일 한 걸음씩</div>
+                        <!-- 현재 학습 상태를 보여준다. -->
+                    </div> <!-- 프로필 카드 영역을 닫는다. -->
+                </div> <!-- Hero 그림 영역을 닫는다. -->
+            </div> <!-- Hero 가운데 배치 영역을 닫는다. -->
+        </section> <!-- Hero 영역을 끝낸다. -->
+
+        <!-- 🔥 <section> for about 🔥 -->
+        <section class="section about" id="about" aria-labelledby="about-title"> <!-- 자기소개 영역을 시작한다. -->
+            <div class="container about-grid"> <!-- 소개 내용을 두 칸 구조로 배치한다. -->
+                <div class="section-heading reveal"> <!-- 소개 제목과 설명을 묶는다. -->
+                    <p class="eyebrow">ABOUT ME</p> <!-- 소개 영역의 작은 영문 제목이다. -->
+                    <h2 id="about-title">처음이라서 더 정확하게,<br>작게 만들고 확인한다.</h2> <!-- 소개 영역의 핵심 제목이다. -->
+                </div> <!-- 소개 제목 묶음을 닫는다. -->
+                <div class="about-content reveal"> <!-- 자세한 자기소개를 묶는다. -->
+                    <p>브라우저가 화면을 그리는 원리를 이해하기 위해 프레임워크보다 HTML, CSS, JavaScript의 기본부터 배우고 있다.</p> <!-- 학습 방향을 설명한다. -->
+                    <p>코드를 외우는 데 그치지 않고 사용자 이벤트, 상태 변경, 화면 업데이트가 연결되는 과정을 직접 구현하고 기록한다.</p> <!-- 구현 원칙을 설명한다. -->
+                    <dl class="about-facts"> <!-- 자신에 대한 핵심 정보를 이름과 값으로 묶는다. -->
+                        <div>
+                            <dt>관심 분야</dt>
+                            <dd>Frontend Web</dd>
+                        </div> <!-- 관심 분야 정보를 보여준다. -->
+                        <div>
+                            <dt>학습 방식</dt>
+                            <dd>Build & Verify</dd>
+                        </div> <!-- 학습 방식 정보를 보여준다. -->
+                        <div>
+                            <dt>현재 목표</dt>
+                            <dd>JavaScript Fundamentals</dd>
+                        </div> <!-- 현재 목표 정보를 보여준다. -->
+                    </dl> <!-- 핵심 정보 목록을 끝낸다. -->
+                </div> <!-- 자세한 소개 묶음을 닫는다. -->
+            </div> <!-- 소개 배치 영역을 닫는다. -->
+        </section> <!-- 자기소개 영역을 끝낸다. -->
+
+        <!-- 🔥 <section> for skills 🔥 -->
+        <section class="section skills" id="skills" aria-labelledby="skills-title"> <!-- 기술 목록 영역을 시작한다. -->
+            <div class="container"> <!-- 기술 내용을 가운데 정렬한다. -->
+                <div class="section-heading section-heading-row reveal"> <!-- 기술 제목과 설명을 가로로 배치한다. -->
+                    <div>
+                        <p class="eyebrow">SKILLS</p>
+                        <h2 id="skills-title">기본을 단단하게</h2>
+                    </div> <!-- 기술 영역 제목을 보여준다. -->
+                    <p>각 기술이 맡은 역할을 구분하고 함께 연결하는 방법을 학습한다.</p> <!-- 기술 학습 방향을 설명한다. -->
+                </div> <!-- 기술 제목 묶음을 닫는다. -->
+
+                <div class="skill-grid"> <!-- 기술 카드를 반응형 격자로 배치한다. -->
+
+                    <!-- 🔥 <article> for Skill Cards 🔥 -->
+                    <article class="skill-card reveal"><span class="skill-number">01</span>
+                        <h3>HTML</h3>
+                        <p>의미 있는 문서 구조와 접근성</p>
+                    </article> <!-- HTML 기술 카드를 보여준다. -->
+                    <article class="skill-card reveal"><span class="skill-number">02</span>
+                        <h3>CSS</h3>
+                        <p>반응형 레이아웃과 시각 표현</p>
+                    </article> <!-- CSS 기술 카드를 보여준다. -->
+                    <article class="skill-card reveal"><span class="skill-number">03</span>
+                        <h3>JavaScript</h3>
+                        <p>DOM, 이벤트, 상태와 비동기 처리</p>
+                    </article> <!-- JavaScript 기술 카드를 보여준다. -->
+                    <article class="skill-card reveal"><span class="skill-number">04</span>
+                        <h3>Git & GitHub</h3>
+                        <p>변경 기록과 프로젝트 공유</p>
+                    </article> <!-- Git 기술 카드를 보여준다. -->
+
+                </div> <!-- 기술 카드 격자를 닫는다. -->
+
+            </div> <!-- 기술 가운데 영역을 닫는다. -->
+        </section> <!-- 기술 목록 영역을 끝낸다. -->
+
+        <!-- 🔥 <section> for projects 🔥 -->
+        <section class="section projects" id="projects" aria-labelledby="projects-title"> <!-- GitHub 프로젝트 영역을 시작한다. -->
+            <div class="container"> <!-- 프로젝트 내용을 가운데 정렬한다. -->
+                <div class="section-heading section-heading-row reveal"> <!-- 프로젝트 제목과 설명을 묶는다. -->
+                    <div>
+                        <p class="eyebrow">PROJECTS</p>
+                        <h2 id="projects-title">GitHub에서 불러온 기록</h2>
+                    </div> <!-- 프로젝트 영역 제목을 보여준다. -->
+                    <p class="project-source">zerodayparty Organization의 공개 저장소를 최근 업데이트 순으로 보여준다.</p>
+                    <!-- JavaScript 실행 전에도 데이터 출처를 알 수 있게 한다. -->
+                </div> <!-- 프로젝트 제목 묶음을 닫는다. -->
+                <div class="filter-bar" aria-label="프로젝트 언어 필터"></div> <!-- JavaScript가 언어 필터 버튼을 넣는다. -->
+                <div class="project-status" role="status" aria-live="polite"></div> <!-- 로딩, 오류, 빈 상태를 알린다. -->
+                <div class="project-grid" aria-live="polite"></div> <!-- JavaScript가 프로젝트 카드를 넣는다. -->
+            </div> <!-- 프로젝트 가운데 영역을 닫는다. -->
+        </section> <!-- GitHub 프로젝트 영역을 끝낸다. -->
+
+        <!-- 🔥 <section> for contact 🔥 -->
+        <section class="section contact" id="contact" aria-labelledby="contact-title"> <!-- 연락 영역을 시작한다. -->
+            <div class="container contact-grid"> <!-- 연락 안내와 폼을 두 칸으로 배치한다. -->
+                <div class="contact-copy reveal"> <!-- 연락 안내 글을 묶는다. -->
+                    <p class="eyebrow">CONTACT</p> <!-- 연락 영역의 작은 영문 제목이다. -->
+                    <h2 id="contact-title">함께 배우고<br>이야기하고 싶다면</h2> <!-- 연락 영역 핵심 제목이다. -->
+                    <p>아래 폼은 유효성 검사 학습용이다. 입력 내용은 서버로 전송되거나 저장되지 않는다.</p> <!-- 폼의 실제 동작 범위를 정확히 알린다. -->
+                </div> <!-- 연락 안내 글을 닫는다. -->
+                <form class="contact-form reveal" novalidate> <!-- 브라우저 기본 알림 대신 직접 검증하는 폼이다. -->
+                    <div class="form-field"> <!-- 이름 입력 요소를 묶는다. -->
+                        <label for="name">이름 <span aria-hidden="true">*</span></label> <!-- 이름 입력칸과 연결된 제목이다. -->
+                        <input id="name" name="name" type="text" autocomplete="name" required
+                            aria-describedby="name-error"> <!-- 사용자의 이름을 입력받는다. -->
+                        <small class="error-message" id="name-error"></small> <!-- 이름 오류 메시지를 보여준다. -->
+                    </div> <!-- 이름 입력 묶음을 닫는다. -->
+                    <div class="form-field"> <!-- 이메일 입력 요소를 묶는다. -->
+                        <label for="email">이메일 <span aria-hidden="true">*</span></label> <!-- 이메일 입력칸과 연결된 제목이다. -->
+                        <input id="email" name="email" type="email" autocomplete="email" required
+                            aria-describedby="email-error"> <!-- 사용자의 이메일을 입력받는다. -->
+                        <small class="error-message" id="email-error"></small> <!-- 이메일 오류 메시지를 보여준다. -->
+                    </div> <!-- 이메일 입력 묶음을 닫는다. -->
+                    <div class="form-field"> <!-- 메시지 입력 요소를 묶는다. -->
+                        <label for="message">메시지 <span aria-hidden="true">*</span></label> <!-- 메시지 입력칸과 연결된 제목이다. -->
+                        <textarea id="message" name="message" rows="5" required
+                            aria-describedby="message-error"></textarea> <!-- 사용자의 메시지를 입력받는다. -->
+                        <small class="error-message" id="message-error"></small> <!-- 메시지 오류 메시지를 보여준다. -->
+                    </div> <!-- 메시지 입력 묶음을 닫는다. -->
+                    <button class="button button-primary submit-button" type="submit">메시지 확인하기 <span
+                            aria-hidden="true">↗</span></button> <!-- 폼 유효성 검사를 실행한다. -->
+                    <p class="form-success" role="status" aria-live="polite"></p> <!-- 폼 성공 메시지를 보여준다. -->
+                </form> <!-- 연락 폼을 끝낸다. -->
+            </div> <!-- 연락 배치 영역을 닫는다. -->
+        </section> <!-- 연락 영역을 끝낸다. -->
+
+    </main> <!-- 페이지 핵심 내용을 끝낸다. -->
+
+
+
+    <!-- 🔥 <footer> 🔥 -->
+    <footer class="site-footer"> <!-- 페이지 하단 정보를 시작한다. -->
+        <div class="container footer-content"> <!-- 하단 내용을 가운데 배치한다. -->
+            <p>© <span class="current-year"></span> <span class="display-name">Frontend Learner</span>. Built from
+                fundamentals.</p> <!-- JavaScript가 현재 연도와 공개 이름을 넣는 저작권 문구다. -->
+            <div class="footer-links"><a class="github-link" href="https://github.com/zerodayparty" target="_blank"
+                    rel="noreferrer">GitHub Organization <span aria-hidden="true">↗</span></a><a href="#hero">맨 위로</a>
+            </div>
+            <!-- zerodayparty Organization과 첫 화면 이동 링크다. -->
+        </div> <!-- 하단 배치 영역을 닫는다. -->
+    </footer> <!-- 페이지 하단 정보를 끝낸다. -->
+
+
+
+    <!-- 🔥 scroll to top button 🔥 -->
+    <button class="scroll-top" type="button" aria-label="페이지 맨 위로 이동">↑</button> <!-- 스크롤 후 나타나는 맨 위 이동 버튼이다. -->
+
+</body> <!-- 화면 내용 영역을 끝낸다. -->
+
+</html> <!-- HTML 문서를 끝낸다. -->

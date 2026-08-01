@@ -1,0 +1,1172 @@
+/*
+ * 파일 이름: sections.css
+ * 역할: Hero, About, Skills, Projects, Contact, Footer와 공통 버튼의 실제 화면 디자인을 담당한다.
+ * 적용 순서: base.css와 header.css 다음에 불러온다.
+ * 상태 연결: projects.js와 form.js가 만드는 카드, 오류, 로딩 클래스도 이 파일에서 꾸민다.
+ * 수정 기준: 특정 본문 섹션이나 카드의 모양을 바꾸려면 이 파일에서 해당 클래스 이름을 찾는다.
+ * 주의 사항: 화면 너비별 배치 변경은 이 파일이 아니라 responsive.css에서 수정한다.
+ */
+
+
+
+
+
+/* 
+================================================================================
+🟩  1. Hero 섹션
+*/
+.hero {
+    /* 첫 화면 Hero 영역을 설정한다. */
+    position: relative;
+    /* 배경 장식을 Hero 기준으로 배치한다. */
+    display: grid;
+    /* 내용을 세로 가운데 배치하기 위해 격자를 쓴다. */
+    min-height: 100svh;
+    /* 모바일 주소창을 고려한 화면 높이를 채운다. */
+    padding-block: calc(var(--header-height) + 3rem) 4rem;
+    /* 고정 메뉴 아래부터 충분한 공간을 만든다. */
+    overflow: hidden;
+    /* 큰 장식이 영역 밖으로 넘치지 않게 한다. */
+}
+
+/* Hero 영역 설정을 끝낸다. */
+
+.hero-grid {
+    /* Hero 글과 이미지를 배치한다. */
+    display: grid;
+    /* 모바일에서는 한 칸 격자를 사용한다. */
+    align-items: center;
+    /* 내용을 세로 가운데 맞춘다. */
+    gap: 3rem;
+    /* 글과 이미지 사이를 띄운다. */
+}
+
+/* Hero 배치 설정을 끝낸다. */
+
+.hero-copy {
+    /* Hero 글 영역을 설정한다. */
+    position: relative;
+    /* 장식보다 앞에 오도록 위치 기준을 만든다. */
+    z-index: 2;
+    /* 배경 장식보다 앞에 보이게 한다. */
+}
+
+/* Hero 글 영역 설정을 끝낸다. */
+
+.hero-description {
+    /* Hero 소개 문장을 설정한다. */
+    max-width: 39rem;
+    /* 한 줄이 너무 길어지지 않게 한다. */
+    margin-bottom: 1.3rem;
+    /* 타자 효과 문장과 간격을 만든다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+    font-size: clamp(1.05rem, 3vw, 1.25rem);
+    /* 화면에 따라 글자 크기를 조금 조절한다. */
+}
+
+/* Hero 소개 문장 설정을 끝낸다. */
+
+.typing-line {
+    /* 타자 효과가 나타나는 줄을 설정한다. */
+    min-height: 2rem;
+    /* 글자가 바뀌어도 화면이 흔들리지 않게 한다. */
+    margin-bottom: 2rem;
+    /* 버튼과 간격을 만든다. */
+    font-family: var(--font-display);
+    /* 기술 이름을 영문 제목 글꼴로 보여준다. */
+    font-weight: 600;
+    /* 기술 이름을 또렷하게 만든다. */
+}
+
+/* 타자 효과 줄 설정을 끝낸다. */
+
+.typing-prefix {
+    /* 타자 효과 앞의 고정 문장을 설정한다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 타자 효과 고정 문장 설정을 끝낸다. */
+
+.typing-text,
+/* 타자로 나타나는 기술 글자를 선택한다. */
+.typing-cursor {
+    /* 타자로 나타나는 글자와 커서를 설정한다. */
+    color: var(--color-primary);
+    /* 민트색으로 강조한다. */
+}
+
+/* 타자 글자와 커서 설정을 끝낸다. */
+
+.typing-cursor {
+    /* 타자 효과의 깜빡이는 커서를 설정한다. */
+    animation: blink 0.8s steps(1) infinite;
+    /* 일정한 속도로 보였다 사라지게 한다. */
+}
+
+/* 타자 커서 설정을 끝낸다. */
+
+.hero-actions {
+    /* Hero의 두 버튼을 배치한다. */
+    display: flex;
+    /* 버튼을 가로 방향으로 배치한다. */
+    flex-wrap: wrap;
+    /* 좁은 화면에서 버튼이 다음 줄로 내려가게 한다. */
+    gap: 0.8rem;
+    /* 버튼 사이를 띄운다. */
+}
+
+/* Hero 버튼 배치 설정을 끝낸다. */
+
+/*
+ * button 클래스는 링크와 실제 button 요소가 같은 모양을 사용하게 만드는 공통 규칙이다.
+ * 색상 차이는 button-primary와 button-secondary가 추가로 덮어쓴다.
+ */
+.button {
+    /* 모든 주요 버튼의 공통 모양을 설정한다. */
+    display: inline-flex;
+    /* 버튼 안의 글자를 유연하게 배치한다. */
+    align-items: center;
+    /* 버튼 글자를 세로 가운데 맞춘다. */
+    justify-content: center;
+    /* 버튼 글자를 가로 가운데 맞춘다. */
+    gap: 0.5rem;
+    /* 버튼 안 여러 요소 사이를 띄운다. */
+    min-height: 3.25rem;
+    /* 손가락으로 누르기 편한 높이를 확보한다. */
+    padding: 0.8rem 1.35rem;
+    /* 버튼 내부에 넉넉한 공간을 만든다. */
+    border: 1px solid transparent;
+    /* 크기 변화가 없도록 투명 테두리를 둔다. */
+    border-radius: 999px;
+    /* 버튼을 알약 모양으로 만든다. */
+    font-weight: 700;
+    /* 버튼 글자를 굵게 만든다. */
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양을 보여준다. */
+    transition: transform var(--transition), background-color var(--transition), border-color var(--transition);
+    /* 버튼 변화를 부드럽게 만든다. */
+}
+
+/* 공통 버튼 설정을 끝낸다. */
+
+.button:hover {
+    /* 버튼에 마우스를 올렸을 때 설정한다. */
+    transform: translateY(-3px);
+    /* 버튼을 살짝 위로 띄운다. */
+}
+
+/* 버튼 마우스 설정을 끝낸다. */
+
+.button-primary {
+    /* 가장 중요한 버튼을 설정한다. */
+    color: #ffffff;
+    /* 민트 배경 위에 흰 글자를 사용한다. */
+    background: var(--color-primary);
+    /* 민트색 배경을 사용한다. */
+    box-shadow: 0 12px 28px color-mix(in srgb, var(--color-primary) 28%, transparent);
+    /* 버튼 아래에 민트색 그림자를 넣는다. */
+}
+
+/* 주요 버튼 설정을 끝낸다. */
+
+.button-primary:hover {
+    /* 주요 버튼에 마우스를 올렸을 때 설정한다. */
+    background: var(--color-primary-strong);
+    /* 더 진하거나 밝은 민트색으로 바꾼다. */
+}
+
+/* 주요 버튼 마우스 설정을 끝낸다. */
+
+.button-secondary {
+    /* 두 번째 중요도의 버튼을 설정한다. */
+    color: var(--color-text);
+    /* 현재 테마 글자색을 사용한다. */
+    background: transparent;
+    /* 배경을 투명하게 만든다. */
+    border-color: var(--color-border);
+    /* 테두리를 보이게 한다. */
+}
+
+/* 보조 버튼 설정을 끝낸다. */
+
+.button-secondary:hover {
+    /* 보조 버튼에 마우스를 올렸을 때 설정한다. */
+    border-color: var(--color-primary);
+    /* 테두리를 민트색으로 바꾼다. */
+}
+
+/* 보조 버튼 마우스 설정을 끝낸다. */
+
+.hero-visual {
+    /* Hero 프로필 그림 영역을 설정한다. */
+    position: relative;
+    /* 상태 배지를 그림 기준으로 배치한다. */
+    z-index: 1;
+    /* 배경 장식보다 앞에 보이게 한다. */
+    width: min(100%, 30rem);
+    /* 모바일 너비를 넘지 않게 한다. */
+    margin-inline: auto;
+    /* 그림을 가로 가운데 놓는다. */
+}
+
+/* Hero 프로필 그림 설정을 끝낸다. */
+
+.portrait-card {
+    /* 프로필 이미지 카드를 설정한다. */
+    position: relative;
+    /* 상태 배지를 카드 기준으로 배치한다. */
+    padding: 0.7rem;
+    /* 이미지 주변에 흰 테두리처럼 공간을 만든다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 카드 경계를 표시한다. */
+    border-radius: var(--radius-large);
+    /* 카드 모서리를 크게 둥글게 만든다. */
+    box-shadow: var(--shadow-large);
+    /* 카드가 떠 보이도록 큰 그림자를 넣는다. */
+    transform: rotate(2deg);
+    /* 손으로 놓은 카드처럼 살짝 기울인다. */
+}
+
+/* 프로필 이미지 카드 설정을 끝낸다. */
+
+.portrait-card img {
+    /* 프로필 이미지 자체를 설정한다. */
+    border-radius: calc(var(--radius-large) - 0.45rem);
+    /* 카드 안쪽 모양에 맞춰 둥글게 만든다. */
+}
+
+/* 프로필 이미지 설정을 끝낸다. */
+
+.status-badge {
+    /* 프로필 위 학습 상태 배지를 설정한다. */
+    position: absolute;
+    /* 카드 위에 겹쳐 배치한다. */
+    right: -0.5rem;
+    /* 카드 오른쪽 바깥으로 조금 내민다. */
+    bottom: 1.4rem;
+    /* 카드 아래에서 위로 올린다. */
+    display: flex;
+    /* 점과 글자를 가로로 배치한다. */
+    align-items: center;
+    /* 점과 글자를 세로 가운데 맞춘다. */
+    gap: 0.5rem;
+    /* 점과 글자 사이를 띄운다. */
+    padding: 0.7rem 1rem;
+    /* 배지 안쪽 공간을 만든다. */
+    color: var(--color-text);
+    /* 현재 테마 글자색을 사용한다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 배지 테두리를 표시한다. */
+    border-radius: 999px;
+    /* 알약 모양으로 만든다. */
+    box-shadow: var(--shadow-small);
+    /* 배지가 떠 보이도록 그림자를 넣는다. */
+    font-size: 0.84rem;
+    /* 배지 글자를 작게 표시한다. */
+    font-weight: 700;
+    /* 배지 글자를 또렷하게 만든다. */
+}
+
+/* 학습 상태 배지 설정을 끝낸다. */
+
+.status-badge span {
+    /* 상태 배지 안의 초록 점을 설정한다. */
+    width: 0.55rem;
+    /* 점의 너비를 지정한다. */
+    height: 0.55rem;
+    /* 점의 높이를 지정한다. */
+    background: #25b17b;
+    /* 활성 상태를 뜻하는 초록색을 사용한다. */
+    border-radius: 50%;
+    /* 점을 완전한 원으로 만든다. */
+    box-shadow: 0 0 0 5px rgba(37, 177, 123, 0.15);
+    /* 점 주변에 연한 원을 만든다. */
+}
+
+/* 상태 배지 점 설정을 끝낸다. */
+
+.hero-decoration {
+    /* Hero 배경의 공통 장식 원을 설정한다. */
+    position: absolute;
+    /* Hero 안 원하는 위치에 자유롭게 놓는다. */
+    border-radius: 50%;
+    /* 장식을 원 모양으로 만든다. */
+    filter: blur(2px);
+    /* 경계를 아주 조금 부드럽게 만든다. */
+    opacity: 0.65;
+    /* 내용보다 튀지 않게 투명도를 낮춘다. */
+}
+
+/* Hero 공통 장식 설정을 끝낸다. */
+
+.hero-decoration-one {
+    /* 첫 번째 장식 원을 설정한다. */
+    top: 9rem;
+    /* Hero 위쪽에서 내려 배치한다. */
+    right: -5rem;
+    /* 화면 오른쪽 바깥으로 일부 내보낸다. */
+    width: 14rem;
+    /* 장식 원 너비를 지정한다. */
+    height: 14rem;
+    /* 장식 원 높이를 지정한다. */
+    background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+    /* 연한 민트색을 사용한다. */
+}
+
+/* 첫 번째 장식 원 설정을 끝낸다. */
+
+.hero-decoration-two {
+    /* 두 번째 장식 원을 설정한다. */
+    bottom: 3rem;
+    /* Hero 아래쪽에서 올려 배치한다. */
+    left: -4rem;
+    /* 화면 왼쪽 바깥으로 일부 내보낸다. */
+    width: 10rem;
+    /* 장식 원 너비를 지정한다. */
+    height: 10rem;
+    /* 장식 원 높이를 지정한다. */
+    background: color-mix(in srgb, var(--color-accent) 25%, transparent);
+    /* 연한 분홍색을 사용한다. */
+}
+
+/* 두 번째 장식 원 설정을 끝낸다. */
+
+
+
+
+
+
+
+
+
+
+
+/* 
+================================================================================================== 
+🟩 2. About 섹션
+*/
+.about {
+    /* 자기소개 섹션 배경을 설정한다. */
+    background: var(--color-surface-soft);
+    /* 다른 섹션과 구분되는 연한 배경을 사용한다. */
+}
+
+/* 자기소개 배경 설정을 끝낸다. */
+
+.about-grid {
+    /* 자기소개 제목과 내용을 배치한다. */
+    display: grid;
+    /* 모바일에서 한 칸 격자를 사용한다. */
+    gap: 2.5rem;
+    /* 제목과 내용 사이를 띄운다. */
+}
+
+/* 자기소개 배치 설정을 끝낸다. */
+
+.about-content>p {
+    /* 자기소개 본문 문장을 설정한다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+    font-size: 1.05rem;
+    /* 기본 글자보다 조금 크게 보여준다. */
+}
+
+/* 자기소개 본문 설정을 끝낸다. */
+
+.about-facts {
+    /* 자기소개 핵심 정보 목록을 설정한다. */
+    display: grid;
+    /* 각 정보를 격자로 배치한다. */
+    gap: 0;
+    /* 선으로 구분하므로 추가 간격을 없앤다. */
+    margin: 2.5rem 0 0;
+    /* 본문과 위쪽 간격을 만든다. */
+}
+
+/* 자기소개 핵심 정보 설정을 끝낸다. */
+
+.about-facts div {
+    /* 핵심 정보의 한 줄을 설정한다. */
+    display: flex;
+    /* 이름과 값을 가로로 배치한다. */
+    justify-content: space-between;
+    /* 이름과 값을 양쪽 끝에 둔다. */
+    gap: 1rem;
+    /* 좁은 화면에서 글자가 붙지 않게 한다. */
+    padding-block: 1rem;
+    /* 각 정보 줄의 위아래 공간을 만든다. */
+    border-bottom: 1px solid var(--color-border);
+    /* 정보 사이에 구분선을 넣는다. */
+}
+
+/* 핵심 정보 한 줄 설정을 끝낸다. */
+
+.about-facts dt {
+    /* 핵심 정보의 이름을 설정한다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 핵심 정보 이름 설정을 끝낸다. */
+
+.about-facts dd {
+    /* 핵심 정보의 값을 설정한다. */
+    margin: 0;
+    /* 설명 목록의 기본 바깥 여백을 없앤다. */
+    font-family: var(--font-display);
+    /* 영문 값에 제목 글꼴을 사용한다. */
+    font-weight: 700;
+    /* 값이 더 잘 보이게 굵게 만든다. */
+    text-align: right;
+    /* 오른쪽 끝에 맞춘다. */
+}
+
+/* 핵심 정보 값 설정을 끝낸다. */
+
+.section-heading-row {
+    /* 제목과 설명이 있는 섹션 머리를 설정한다. */
+    margin-bottom: 2.5rem;
+    /* 아래 카드 영역과 간격을 만든다. */
+}
+
+/* 섹션 머리 설정을 끝낸다. */
+
+.section-heading-row>p {
+    /* 섹션 머리 오른쪽 설명을 설정한다. */
+    max-width: 30rem;
+    /* 설명 한 줄이 너무 길지 않게 한다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 섹션 머리 설명 설정을 끝낸다. */
+
+
+
+
+
+
+/* 
+=====================================================================================================
+🟩 3. Skills 섹션
+*/
+
+/*
+    * auto-fit은 현재 너비에 들어갈 수 있는 카드 열 개수를 브라우저가 자동 계산하게 한다.
+    * minmax는 한 카드가 너무 좁아지지 않게 최소 너비를 정하고 남은 공간은 1fr 비율로 나눈다.
+    * min(100%, 15rem)은 15rem보다 좁은 모바일에서도 카드가 화면 밖으로 나가지 않게 한다.
+ */
+.skill-grid {
+    /* 기술 카드 목록을 설정한다. */
+    display: grid;
+    /* 카드를 반응형 격자로 배치한다. */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    /* 공간에 맞는 열 개수를 자동 계산한다. */
+    gap: 1rem;
+    /* 카드 사이를 띄운다. */
+}
+
+/* 기술 카드 목록 설정을 끝낸다. */
+
+.skill-card {
+    /* 한 개의 기술 카드를 설정한다. */
+    padding: 1.6rem;
+    /* 카드 안쪽에 넉넉한 공간을 만든다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 카드 경계를 표시한다. */
+    border-radius: var(--radius-medium);
+    /* 카드 모서리를 둥글게 만든다. */
+    box-shadow: var(--shadow-small);
+    /* 카드를 배경에서 살짝 띄운다. */
+    transition: transform var(--transition), border-color var(--transition);
+    /* 마우스 움직임을 부드럽게 만든다. */
+}
+
+/* 기술 카드 설정을 끝낸다. */
+
+.skill-card:hover {
+    /* 기술 카드에 마우스를 올렸을 때 설정한다. */
+    border-color: var(--color-primary);
+    /* 카드 테두리를 민트색으로 바꾼다. */
+    transform: translateY(-6px);
+    /* 카드를 위로 살짝 띄운다. */
+}
+
+/* 기술 카드 마우스 설정을 끝낸다. */
+
+.skill-number {
+    /* 기술 카드의 순번을 설정한다. */
+    display: block;
+    /* 제목 위 한 줄을 차지하게 한다. */
+    margin-bottom: 2rem;
+    /* 기술 제목과 간격을 만든다. */
+    color: var(--color-primary);
+    /* 민트색으로 강조한다. */
+    font-family: var(--font-display);
+    /* 영문 제목 글꼴을 사용한다. */
+    font-size: 0.8rem;
+    /* 순번을 작게 표시한다. */
+    font-weight: 700;
+    /* 순번을 또렷하게 표시한다. */
+}
+
+/* 기술 카드 순번 설정을 끝낸다. */
+
+.skill-card p {
+    /* 기술 카드 설명을 설정한다. */
+    margin-bottom: 0;
+    /* 카드 아래 불필요한 여백을 없앤다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 기술 카드 설명 설정을 끝낸다. */
+
+.projects {
+    /* 프로젝트 섹션 배경을 설정한다. */
+    background: var(--color-surface-soft);
+    /* 다른 섹션과 구분되는 배경색을 사용한다. */
+}
+
+/* 프로젝트 섹션 배경 설정을 끝낸다. */
+
+.project-source {
+    /* 프로젝트 데이터 출처 설명을 설정한다. */
+    margin-bottom: 0;
+    /* 제목 줄 아래 불필요한 여백을 없앤다. */
+}
+
+/* 프로젝트 출처 설명 설정을 끝낸다. */
+
+.filter-bar {
+    /* 언어 필터 버튼 모음을 설정한다. */
+    display: flex;
+    /* 필터 버튼을 가로로 배치한다. */
+    gap: 0.6rem;
+    /* 필터 버튼 사이를 띄운다. */
+    margin-bottom: 1.5rem;
+    /* 프로젝트 카드와 간격을 만든다. */
+    padding-bottom: 0.25rem;
+    /* 가로 스크롤바와 버튼을 띄운다. */
+    overflow-x: auto;
+    /* 좁은 화면에서 버튼을 가로로 스크롤하게 한다. */
+    scrollbar-width: thin;
+    /* 스크롤바를 얇게 표시한다. */
+}
+
+/* 필터 버튼 모음 설정을 끝낸다. */
+
+.filter-button {
+    /* 한 개의 언어 필터 버튼을 설정한다. */
+    flex: 0 0 auto;
+    /* 버튼 글자가 줄어들지 않게 한다. */
+    padding: 0.55rem 0.9rem;
+    /* 버튼 내부 공간을 만든다. */
+    color: var(--color-text-soft);
+    /* 기본 상태에 연한 글자색을 사용한다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 버튼 경계를 표시한다. */
+    border-radius: 999px;
+    /* 버튼을 알약 모양으로 만든다. */
+    font-size: 0.87rem;
+    /* 필터 글자를 조금 작게 표시한다. */
+    font-weight: 700;
+    /* 필터 글자를 또렷하게 만든다. */
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양을 보여준다. */
+}
+
+/* 언어 필터 버튼 설정을 끝낸다. */
+
+.filter-button.active {
+    /* 선택된 언어 필터 버튼을 설정한다. */
+    color: #ffffff;
+    /* 강조 배경 위에 흰 글자를 쓴다. */
+    background: var(--color-primary);
+    /* 선택된 버튼을 민트색으로 만든다. */
+    border-color: var(--color-primary);
+    /* 테두리도 같은 민트색으로 만든다. */
+}
+
+/* 선택된 필터 버튼 설정을 끝낸다. */
+
+
+
+
+/* 
+===================================================================================================== 
+🟩 4. Projects 섹션
+*/
+
+/*
+ * 프로젝트 개수는 GitHub API 응답에 따라 달라지므로 고정된 열 개수를 사용하지 않는다.
+ * auto-fit과 minmax가 카드 수와 화면 너비를 보고 한 줄에 들어갈 열 개수를 자동 결정한다.
+ */
+.project-grid {
+    /* 프로젝트 카드 목록을 설정한다. */
+
+    display: grid;
+    /* 프로젝트를 반응형 격자로 배치한다. */
+
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    /* 화면 공간에 따라 열 개수를 자동 계산한다. */
+
+    gap: 1rem;
+    /* 프로젝트 카드 사이를 띄운다. */
+}
+
+/* 프로젝트 카드 목록 설정을 끝낸다. */
+
+.project-card {
+    /* 한 개의 프로젝트 카드를 설정한다. */
+    display: flex;
+    /* 카드 내용을 세로로 유연하게 배치한다. */
+    flex-direction: column;
+    /* 제목부터 링크까지 위아래로 쌓는다. */
+    min-height: 18rem;
+    /* 카드 높이를 일정하게 맞춘다. */
+    padding: 1.5rem;
+    /* 카드 내부 공간을 만든다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 카드 경계를 표시한다. */
+    border-radius: var(--radius-medium);
+    /* 카드 모서리를 둥글게 만든다. */
+    box-shadow: var(--shadow-small);
+    /* 카드가 배경에서 떠 보이게 한다. */
+    transition: transform var(--transition), border-color var(--transition);
+    /* 마우스 변화를 부드럽게 만든다. */
+}
+
+/* 프로젝트 카드 설정을 끝낸다. */
+
+.project-card:hover {
+    /* 프로젝트 카드에 마우스를 올렸을 때 설정한다. */
+    border-color: var(--color-primary);
+    /* 카드 테두리를 민트색으로 바꾼다. */
+    transform: translateY(-6px);
+    /* 카드를 살짝 위로 올린다. */
+}
+
+/* 프로젝트 카드 마우스 설정을 끝낸다. */
+
+.project-card h3 {
+    /* 프로젝트 이름을 설정한다. */
+    overflow-wrap: anywhere;
+    /* 긴 저장소 이름도 카드 안에서 줄바꿈한다. */
+}
+
+/* 프로젝트 이름 설정을 끝낸다. */
+
+.project-description {
+    /* 프로젝트 설명 문장을 설정한다. */
+    flex-grow: 1;
+    /* 카드의 남은 공간을 차지해 아래 정보를 맞춘다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 프로젝트 설명 설정을 끝낸다. */
+
+.project-meta {
+    /* 프로젝트 언어와 별 개수를 설정한다. */
+    display: flex;
+    /* 정보를 한 줄로 배치한다. */
+    flex-wrap: wrap;
+    /* 좁은 카드에서는 다음 줄로 내려가게 한다. */
+    gap: 0.8rem;
+    /* 정보 사이를 띄운다. */
+    margin-bottom: 1.25rem;
+    /* 저장소 링크와 간격을 만든다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+    font-size: 0.86rem;
+    /* 부가 정보를 조금 작게 표시한다. */
+}
+
+/* 프로젝트 부가 정보 설정을 끝낸다. */
+
+.language-dot {
+    /* 프로젝트 언어 앞의 색 점을 설정한다. */
+    display: inline-block;
+    /* 글자 옆에 크기를 가질 수 있게 한다. */
+    width: 0.55rem;
+    /* 점 너비를 지정한다. */
+    height: 0.55rem;
+    /* 점 높이를 지정한다. */
+    margin-right: 0.35rem;
+    /* 언어 이름과 점 사이를 띄운다. */
+    background: var(--color-accent);
+    /* 분홍색 점을 사용한다. */
+    border-radius: 50%;
+    /* 완전한 원으로 만든다. */
+}
+
+/* 프로젝트 언어 점 설정을 끝낸다. */
+
+.project-link {
+    /* 프로젝트의 GitHub 링크를 설정한다. */
+    align-self: flex-start;
+    /* 링크가 카드 너비 전체로 늘어나지 않게 한다. */
+    color: var(--color-primary);
+    /* 민트색으로 강조한다. */
+    font-weight: 700;
+    /* 링크를 또렷하게 표시한다. */
+}
+
+/* 프로젝트 GitHub 링크 설정을 끝낸다. */
+
+.project-link:hover {
+    /* 프로젝트 링크에 마우스를 올렸을 때 설정한다. */
+    text-decoration: underline;
+    /* 클릭 가능한 글자임을 밑줄로 알려준다. */
+    text-underline-offset: 0.3rem;
+    /* 밑줄을 글자에서 조금 띄운다. */
+}
+
+/* 프로젝트 링크 마우스 설정을 끝낸다. */
+
+.project-status {
+    /* 로딩, 오류, 빈 상태 영역을 설정한다. */
+    min-height: 0;
+    /* 상태가 없을 때 불필요한 높이를 만들지 않는다. */
+}
+
+/* 프로젝트 상태 영역 설정을 끝낸다. */
+
+.status-card {
+    /* 로딩, 오류, 빈 상태 카드를 설정한다. */
+    display: grid;
+    /* 상태 내용을 가운데에 놓기 위해 격자를 사용한다. */
+    place-items: center;
+    /* 가로와 세로 모두 가운데 맞춘다. */
+    min-height: 14rem;
+    /* 상태가 충분히 잘 보이게 높이를 준다. */
+    padding: 2rem;
+    /* 상태 문구 주변 공간을 만든다. */
+    text-align: center;
+    /* 상태 문구를 가운데 정렬한다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px dashed var(--color-border);
+    /* 일반 카드와 다른 점선을 사용한다. */
+    border-radius: var(--radius-medium);
+    /* 모서리를 둥글게 만든다. */
+}
+
+/* 프로젝트 상태 카드 설정을 끝낸다. */
+
+.status-card p {
+    /* 상태 카드의 설명 문장을 설정한다. */
+    margin-bottom: 1rem;
+    /* 재시도 버튼과 간격을 만든다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 상태 카드 설명 설정을 끝낸다. */
+
+.spinner {
+    /* 데이터 로딩 중 회전 표시를 설정한다. */
+
+    width: 2.4rem;
+    /* 회전 표시의 너비를 지정한다. */
+    height: 2.4rem;
+    /* 회전 표시의 높이를 지정한다. */
+    margin-bottom: 1rem;
+    /* 로딩 문구와 간격을 만든다. */
+    border: 3px solid var(--color-border);
+    /* 연한 원 테두리를 만든다. */
+    border-top-color: var(--color-primary);
+    /* 위쪽만 민트색으로 만든다. */
+    border-radius: 50%;
+    /* 테두리를 원 모양으로 만든다. */
+    animation: spin 0.8s linear infinite;
+    /* 계속 회전하게 만든다. */
+}
+
+/* 로딩 회전 표시 설정을 끝낸다. */
+
+
+
+
+
+
+/* 
+===================================================================================================== 
+🟩 5. Contact 섹션
+*/
+
+.contact-grid {
+    /* 연락 안내와 폼을 배치한다. */
+    display: grid;
+    /* 모바일에서는 한 칸 격자를 사용한다. */
+    gap: 3rem;
+    /* 안내와 폼 사이를 띄운다. */
+}
+
+/* 연락 영역 배치 설정을 끝낸다. */
+
+.contact-copy>p:last-child {
+    /* 연락 영역 설명 문장을 설정한다. */
+    max-width: 32rem;
+    /* 한 줄이 너무 길지 않게 한다. */
+    color: var(--color-text-soft);
+    /* 설명용 연한 글자색을 사용한다. */
+}
+
+/* 연락 영역 설명 설정을 끝낸다. */
+
+.contact-form {
+    /* 연락 폼 카드를 설정한다. */
+    padding: 1.4rem;
+    /* 폼 내부에 공간을 만든다. */
+    background: var(--color-surface);
+    /* 현재 테마 카드 배경색을 사용한다. */
+    border: 1px solid var(--color-border);
+    /* 폼 카드 경계를 표시한다. */
+    border-radius: var(--radius-medium);
+    /* 폼 카드 모서리를 둥글게 만든다. */
+    box-shadow: var(--shadow-large);
+    /* 폼 카드를 배경에서 띄운다. */
+}
+
+/* 연락 폼 카드 설정을 끝낸다. */
+
+.form-field {
+    /* 한 개의 입력칸 묶음을 설정한다. */
+    margin-bottom: 1.15rem;
+    /* 다음 입력칸과 간격을 만든다. */
+}
+
+/* 입력칸 묶음 설정을 끝낸다. */
+
+.form-field label {
+    /* 입력칸 제목을 설정한다. */
+    display: block;
+    /* 입력칸 위에서 한 줄을 차지하게 한다. */
+    margin-bottom: 0.45rem;
+    /* 입력칸과 제목 사이를 띄운다. */
+    font-size: 0.92rem;
+    /* 제목을 본문보다 조금 작게 표시한다. */
+    font-weight: 700;
+    /* 제목을 또렷하게 만든다. */
+}
+
+/* 입력칸 제목 설정을 끝낸다. */
+
+.form-field label span {
+    /* 필수 입력 별표를 설정한다. */
+    color: var(--color-error);
+    /* 오류 색으로 필수 항목임을 강조한다. */
+}
+
+/* 필수 입력 별표 설정을 끝낸다. */
+
+.form-field input,
+/* 이름과 이메일 입력칸을 공통 입력 디자인 대상에 포함한다. */
+.form-field textarea {
+    /* 이름, 이메일, 메시지 입력칸을 설정한다. */
+    width: 100%;
+    /* 폼 카드의 가로 공간을 모두 사용한다. */
+    padding: 0.85rem 1rem;
+    /* 글자와 테두리 사이 공간을 만든다. */
+    color: var(--color-text);
+    /* 현재 테마의 글자색을 사용한다. */
+    background: var(--color-bg);
+    /* 페이지 배경색으로 입력 영역을 구분한다. */
+    border: 1px solid var(--color-border);
+    /* 입력칸 경계를 표시한다. */
+    border-radius: var(--radius-small);
+    /* 입력칸 모서리를 둥글게 만든다. */
+    transition: border-color var(--transition), box-shadow var(--transition);
+    /* 선택과 오류 변화를 부드럽게 만든다. */
+}
+
+/* 입력칸 설정을 끝낸다. */
+
+.form-field textarea {
+    /* 메시지 입력칸만 추가로 설정한다. */
+    resize: vertical;
+    /* 사용자가 세로 높이만 조절하게 한다. */
+}
+
+/* 메시지 입력칸 설정을 끝낸다. */
+
+.form-field input:focus,
+/* 선택한 한 줄 입력칸을 공통 초점 디자인 대상에 포함한다. */
+.form-field textarea:focus {
+    /* 입력칸을 선택했을 때 설정한다. */
+    border-color: var(--color-primary);
+    /* 테두리를 민트색으로 바꾼다. */
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-primary) 15%, transparent);
+    /* 선택된 입력칸 주변에 연한 민트색을 표시한다. */
+    outline: none;
+    /* 브라우저 기본 외곽선 대신 직접 만든 효과를 쓴다. */
+}
+
+/* 입력칸 선택 설정을 끝낸다. */
+
+/*
+ * form.js가 검증 실패를 발견하면 입력 요소에 invalid 클래스를 붙인다.
+ * CSS는 검증 규칙을 판단하지 않고 invalid 클래스가 있는 입력칸의 테두리만 오류 색으로 바꾼다.
+ */
+.form-field input.invalid,
+/* 검증에 실패한 한 줄 입력칸을 오류 디자인 대상에 포함한다. */
+.form-field textarea.invalid {
+    /* 검증에 실패한 입력칸을 설정한다. */
+    border-color: var(--color-error);
+    /* 입력칸 테두리를 오류 색으로 바꾼다. */
+}
+
+/* 잘못된 입력칸 설정을 끝낸다. */
+
+.error-message {
+    /* 입력칸 아래 오류 문구를 설정한다. */
+    display: block;
+    /* 오류 문구가 한 줄을 차지하게 한다. */
+    min-height: 1.45rem;
+    /* 오류가 없어도 폼 높이가 흔들리지 않게 한다. */
+    padding-top: 0.3rem;
+    /* 입력칸과 오류 글자를 조금 띄운다. */
+    color: var(--color-error);
+    /* 오류 색으로 표시한다. */
+    font-size: 0.82rem;
+    /* 오류 글자를 조금 작게 표시한다. */
+}
+
+/* 오류 문구 설정을 끝낸다. */
+
+.submit-button {
+    /* 폼 제출 버튼을 설정한다. */
+    width: 100%;
+    /* 모바일에서 폼 너비를 모두 사용한다. */
+}
+
+/* 폼 제출 버튼 설정을 끝낸다. */
+
+.form-success {
+    /* 폼 검증 성공 문구를 설정한다. */
+    min-height: 1.7rem;
+    /* 메시지가 생겨도 폼 높이가 크게 흔들리지 않게 한다. */
+    margin: 0.8rem 0 0;
+    /* 버튼과 성공 문구 사이를 띄운다. */
+    color: var(--color-success);
+    /* 성공 색으로 표시한다. */
+    font-size: 0.9rem;
+    /* 성공 문구를 조금 작게 표시한다. */
+    font-weight: 700;
+    /* 성공 문구를 또렷하게 만든다. */
+    text-align: center;
+    /* 문구를 버튼 아래 가운데 놓는다. */
+}
+
+/* 폼 성공 문구 설정을 끝낸다. */
+
+.site-footer {
+    /* 페이지 하단 영역을 설정한다. */
+    padding-block: 2rem;
+    /* 하단 위아래에 공간을 만든다. */
+    background: var(--color-surface-soft);
+    /* 본문과 구분되는 배경색을 사용한다. */
+    border-top: 1px solid var(--color-border);
+    /* 위쪽에 구분선을 넣는다. */
+}
+
+/* 페이지 하단 설정을 끝낸다. */
+
+.footer-content {
+    /* 저작권과 링크를 배치한다. */
+    display: flex;
+    /* 두 영역을 유연하게 배치한다. */
+    flex-direction: column;
+    /* 모바일에서는 위아래로 쌓는다. */
+    gap: 1rem;
+    /* 두 영역 사이를 띄운다. */
+    color: var(--color-text-soft);
+    /* 부가 정보용 연한 글자색을 사용한다. */
+    font-size: 0.9rem;
+    /* 하단 글자를 조금 작게 표시한다. */
+}
+
+/* 하단 내용 배치 설정을 끝낸다. */
+
+.footer-content p {
+    /* 저작권 문구를 설정한다. */
+    margin-bottom: 0;
+    /* 기본 아래 여백을 없앤다. */
+}
+
+/* 저작권 문구 설정을 끝낸다. */
+
+.footer-links {
+    /* 하단 링크 묶음을 설정한다. */
+    display: flex;
+    /* 링크를 가로로 배치한다. */
+    gap: 1rem;
+    /* 링크 사이를 띄운다. */
+    font-weight: 700;
+    /* 링크를 또렷하게 만든다. */
+}
+
+/* 하단 링크 묶음 설정을 끝낸다. */
+
+.footer-links a:hover {
+    /* 하단 링크에 마우스를 올렸을 때 설정한다. */
+    color: var(--color-primary);
+    /* 링크를 민트색으로 바꾼다. */
+}
+
+/* 하단 링크 마우스 설정을 끝낸다. */
+
+
+
+
+
+
+/* 
+===================================================================================================== 
+🟩 6. 맨 위 버튼
+*/
+
+/*
+ * 맨 위 버튼은 처음에 opacity 0과 visibility hidden으로 보이지 않고 선택도 되지 않는다.
+ * ui.js가 스크롤 300픽셀 이상에서 visible 클래스를 붙이면 아래 규칙이 세 값을 바꾼다.
+ */
+.scroll-top {
+    /* 맨 위 이동 버튼을 설정한다. */
+    position: fixed;
+    /* 스크롤과 관계없이 화면에 고정한다. */
+    right: 1rem;
+    /* 화면 오른쪽에서 띄운다. */
+    bottom: 1rem;
+    /* 화면 아래쪽에서 띄운다. */
+    z-index: 90;
+    /* 본문보다 앞에 보이게 한다. */
+    width: 3rem;
+    /* 버튼 너비를 지정한다. */
+    height: 3rem;
+    /* 버튼 높이를 지정한다. */
+    color: #ffffff;
+    /* 민트 배경 위에 흰 화살표를 사용한다. */
+    background: var(--color-primary);
+    /* 민트색 배경을 사용한다. */
+    border: 0;
+    /* 기본 테두리를 없앤다. */
+    border-radius: 50%;
+    /* 버튼을 원 모양으로 만든다. */
+    box-shadow: var(--shadow-small);
+    /* 버튼이 떠 보이게 그림자를 넣는다. */
+    opacity: 0;
+    /* 처음에는 투명하게 숨긴다. */
+    visibility: hidden;
+    /* 처음에는 선택할 수 없게 숨긴다. */
+    cursor: pointer;
+    /* 마우스를 올리면 손가락 모양을 보여준다. */
+    transform: translateY(1rem);
+    /* 아래쪽에 살짝 내려 둔다. */
+    transition:
+        /* 버튼이 나타나고 사라질 때 여러 속성을 같은 시간으로 변화시킨다. */
+        opacity var(--transition),
+        /* 투명도를 바꿔 버튼이 서서히 보이게 한다. */
+        visibility var(--transition),
+        /* 보조 기술과 클릭 가능 상태를 투명도 변화에 맞춘다. */
+        transform var(--transition),
+        /* 아래쪽에서 원래 위치로 이동하게 한다. */
+        background-color var(--transition);
+    /* 마우스를 올렸을 때 배경색이 부드럽게 바뀌게 한다. */
+}
+
+/* 맨 위 이동 버튼 설정을 끝낸다. */
+
+.scroll-top.visible {
+    /* 300픽셀 이상 스크롤한 뒤 버튼을 설정한다. */
+    opacity: 1;
+    /* 버튼을 완전히 보이게 한다. */
+    visibility: visible;
+    /* 버튼을 선택하고 누를 수 있게 한다. */
+    transform: translateY(0);
+    /* 원래 위치로 올린다. */
+}
+
+/* 보이는 맨 위 버튼 설정을 끝낸다. */
+
+.scroll-top:hover {
+    /* 맨 위 버튼에 마우스를 올렸을 때 설정한다. */
+    background: var(--color-primary-strong);
+    /* 민트색을 더 진하거나 밝게 바꾼다. */
+}
+
+/* 맨 위 버튼 마우스 설정을 끝낸다. */
+
+
+
+
+
+
+
+/* 
+===================================================================================================== 
+🟩 7. 스크롤 애니메이션
+*/
+
+/*
+ * ui.js의 IntersectionObserver는 요소가 화면에 20퍼센트 들어왔을 때 visible 클래스를 붙인다.
+ * reveal만 있을 때는 투명하고 아래에 있으며, reveal visible 두 클래스가 함께 있으면 원래 위치로 나타난다.
+ */
+.reveal {
+    /* 스크롤 애니메이션 전 요소를 설정한다. */
+    opacity: 0;
+    /* 화면에 들어오기 전에는 투명하게 만든다. */
+    transform: translateY(3rem);
+    /* 원래 위치보다 약 48픽셀 아래에 두어 위로 올라오는 움직임이 분명하게 보이게 한다. */
+    transition: opacity 850ms ease-out, transform 850ms cubic-bezier(0.22, 1, 0.36, 1);
+    /* 0.85초 동안 빠르게 시작하고 천천히 멈추게 하여 등장 효과가 확실히 느껴지게 한다. */
+}
+
+/* 스크롤 애니메이션 전 설정을 끝낸다. */
+
+.reveal.visible {
+    /* 화면에 들어온 요소를 설정한다. */
+    opacity: 1;
+    /* 요소를 완전히 보이게 한다. */
+    transform: translateY(0);
+    /* 원래 위치로 올린다. */
+}
+
+/* 스크롤 애니메이션 후 설정을 끝낸다. */
+
+@keyframes blink {
+
+    /* 타자 커서의 깜빡임 동작을 만든다. */
+    50% {
+        opacity: 0;
+    }
+
+    /* 한 주기의 중간에는 커서를 숨긴다. */
+}
+
+/* 타자 커서 동작을 끝낸다. */
+
+@keyframes spin {
+
+    /* 로딩 표시의 회전 동작을 만든다. */
+    to {
+        transform: rotate(360deg);
+    }
+
+    /* 한 바퀴를 완전히 회전한다. */
+}
+
+/* 로딩 표시 회전 동작을 끝낸다. */

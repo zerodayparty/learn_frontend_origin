@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" role="img" aria-labelledby="title description"> <!-- 프로필 일러스트의 SVG 영역을 시작한다. -->
+    <title id="title">웹 개발을 공부하는 학습자</title> <!-- 이미지의 짧은 제목이다. -->
+    <desc id="description">노트북 앞에서 HTML, CSS, JavaScript를 공부하는 학습자 일러스트</desc> <!-- 이미지의 자세한 설명이다. -->
+    <rect width="520" height="520" rx="80" fill="#e9f6f1"/> <!-- 둥근 민트색 배경을 그린다. -->
+    <circle cx="420" cy="95" r="54" fill="#ffcb77" opacity=".9"/> <!-- 오른쪽 위에 노란 장식 원을 그린다. -->
+    <circle cx="85" cy="420" r="70" fill="#ff8fa3" opacity=".75"/> <!-- 왼쪽 아래에 분홍 장식 원을 그린다. -->
+    <path d="M112 421c13-104 72-159 148-159s135 55 148 159" fill="#26324b"/> <!-- 학습자의 상체를 그린다. -->
+    <circle cx="260" cy="199" r="82" fill="#d79a72"/> <!-- 학습자의 얼굴을 그린다. -->
+    <path d="M178 197c0-81 43-118 95-118 62 0 91 47 89 104-24-8-46-31-57-57-24 44-67 67-127 71Z" fill="#20283b"/> <!-- 학습자의 머리카락을 그린다. -->
+    <circle cx="231" cy="204" r="6" fill="#20283b"/> <!-- 왼쪽 눈을 그린다. -->
+    <circle cx="291" cy="204" r="6" fill="#20283b"/> <!-- 오른쪽 눈을 그린다. -->
+    <path d="M239 237c15 13 31 13 46 0" fill="none" stroke="#8c4e3b" stroke-width="7" stroke-linecap="round"/> <!-- 웃는 입을 그린다. -->
+    <path d="M150 360h220l-21 105H171z" fill="#f7faf9" stroke="#20283b" stroke-width="9" stroke-linejoin="round"/> <!-- 앞에 놓인 노트북을 그린다. -->
+    <path d="M228 408h64" stroke="#32a885" stroke-width="10" stroke-linecap="round"/> <!-- 노트북의 민트색 표시를 그린다. -->
+    <path d="M112 465h296" stroke="#20283b" stroke-width="12" stroke-linecap="round"/> <!-- 책상 가장자리를 그린다. -->
+    <g fill="#26324b" font-family="monospace" font-size="26" font-weight="700"> <!-- 웹 기술 글자 묶음을 시작한다. -->
+        <text x="46" y="91">&lt;HTML&gt;</text> <!-- HTML 글자를 왼쪽 위에 표시한다. -->
+        <text x="377" y="339">CSS</text> <!-- CSS 글자를 오른쪽에 표시한다. -->
+        <text x="54" y="305">JS</text> <!-- JavaScript 줄임말을 왼쪽에 표시한다. -->
+    </g> <!-- 웹 기술 글자 묶음을 끝낸다. -->
+</svg> <!-- 프로필 SVG 영역을 끝낸다. -->
