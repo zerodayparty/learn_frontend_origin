@@ -33,6 +33,7 @@ const checks = [ // 요구사항별 자동 검사 목록을 시작한다.
     ["다크 모드 CSS 변수", /\[data-theme="dark"\]/.test(css)], // 어두운 테마 CSS 변수가 있는지 검사한다.
     ["Flexbox 네비게이션", /\.nav\s*\{[^}]*display:\s*flex/s.test(css)], // 네비게이션에 Flexbox가 쓰였는지 검사한다.
     ["스크롤 후 모바일 메뉴 기준 영역", /\.site-header\.scrolled\s*\{[^}]*backdrop-filter:\s*none/s.test(css)], // 스크롤 Header가 fixed 모바일 메뉴의 화면 기준을 바꾸지 않는지 검사한다.
+    ["Footer 고정 버튼 공간", /\.footer-content\s*\{[^}]*padding-right:\s*4\.5rem/s.test(css) && /\.footer-links\s*\{[^}]*flex-wrap:\s*wrap/s.test(css)], // 고정 맨 위 버튼이 Footer 링크를 덮지 않고 좁은 화면에서 링크가 줄바꿈되는지 검사한다.
     ["Grid 프로젝트 카드", /\.project-grid\s*\{[^}]*display:\s*grid/s.test(css)], // 프로젝트 목록에 Grid가 쓰였는지 검사한다.
     ["auto-fit과 minmax", /auto-fit/.test(css) && /minmax\(/.test(css)], // 반응형 카드 자동 배치 문법이 있는지 검사한다.
     ["768px 태블릿 구간", /@media \(min-width: 48rem\)/.test(css)], // 768픽셀 반응형 구간이 있는지 검사한다.

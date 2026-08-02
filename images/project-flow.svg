@@ -248,5 +248,5 @@
     <text x="90" y="1355" font-size="15" font-weight="700" fill="#73e0bf">반응형</text>
     <text x="170" y="1355" font-size="14" fill="#f2f5f3">모바일 기본 → 768px 태블릿 → 1024px 데스크톱</text>
     <text x="940" y="1355" font-size="15" font-weight="700" fill="#ff9aac">검증</text>
-    <text x="1015" y="1355" font-size="14" fill="#f2f5f3">JavaScript 문법 검사 · 요구사항 정적 검사 42개 · Git 공백 검사</text>
+    <text x="1015" y="1355" font-size="14" fill="#f2f5f3">JavaScript 문법 검사 · 요구사항 정적 검사 43개 · Git 공백 검사</text>
 </svg>
