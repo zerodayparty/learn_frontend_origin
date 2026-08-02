@@ -24,7 +24,7 @@ window.PortfolioForm = (() => { // 연락 폼 검증 기능을 한 묶음으로 
         field.setAttribute("aria-invalid", String(Boolean(error))); // 보조 기술에 오류 여부를 알려준다.
 
         errorElement.textContent = error; // 입력칸 가까이에 오류 문장을 표시한다.
-        s
+
         return !error; // 오류가 없으면 참을 돌려준다.
     }; // 한 입력칸 검증을 끝낸다.
 
